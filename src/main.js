@@ -5,6 +5,8 @@ import testFragment from './shader/test/fragment.glsl'
 import testVertex from './shader/test/vertex.glsl'
 import toyVert from './shader/toy/vertex.glsl'
 import toyFrag from './shader/toy/fragment.glsl'
+import simleyVert from './shader/toy/smily/vertex.glsl'
+import simleyFrag from './shader/toy/smily/fragment.glsl'
 
 // Set up the scene, camera, and renderer
 let scene, camera, renderer;
@@ -76,6 +78,9 @@ function createShaderMesh() {
         // fragmentShader: cryistalfragment,
         vertexShader: toyVert,
         fragmentShader: toyFrag
+        // vertexShader: simleyVert,
+        // fragmentShader: simleyFrag
+
     });
 
     // Create a full-screen plane geometry
