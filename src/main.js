@@ -76,10 +76,10 @@ function createShaderMesh() {
         uniforms: uniforms,
         // vertexShader: cryistalVertex,
         // fragmentShader: cryistalfragment,
-        vertexShader: toyVert,
-        fragmentShader: toyFrag
-        // vertexShader: simleyVert,
-        // fragmentShader: simleyFrag
+        // vertexShader: toyVert,
+        // fragmentShader: toyFrag
+        vertexShader: simleyVert,
+        fragmentShader: simleyFrag
 
     });
 
