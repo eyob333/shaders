@@ -36,7 +36,7 @@ vec4 headF(vec2 uv){
     col.rgb  = mix(col.rgb, vec3(0.72, 0.02, 0.02), S( .48, .49, d));
 
     float highLight = S(.41, .40, d);
-    highLight *= remap(.41, 0., .7, .0 uv.y);
+    highLight *= remap(.41, 0., .7, .0, uv.y);
     col.rgb = mix( col.rgb, vec3(1.), highLight);
     return col;
 }
