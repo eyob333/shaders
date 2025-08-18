@@ -21,7 +21,7 @@ vec2 withIN( vec2 uv, vec4 rect){
     return ( uv.xy - rect.xy) / (rect.zw - rect.xy);
 }
 
-vec4 brow(vec2 uv){
+vec4 brow(vec2 uv, float t){
     uv -= .5;
     uv.y += .25;
     float y = uv.y;
@@ -64,7 +64,10 @@ vec4 mouthF(vec2 uv, float t){
     col.a = S(.5, .47, d );
 
 
-    float td =length(uv - vec2(.0, .6));
+    vec2 tUv = uv;
+    tUv.y += (abs(uv.x)*.5+.1)*(1.-t);
+
+    float td =length(tUv - vec2(.0, .6));
 
     vec3 toothCol = vec3(1.) * S(.6, .35, d);
 
@@ -143,7 +146,7 @@ vec4 smily(vec2 uv, vec2 m, float t){
     vec4 head = headF(uv); 
     vec4 eye = eyes(withIN(uv, vec4(.03, -.1, .37, .25)), side, m, t);
     vec4 mouth = mouthF(withIN(uv, vec4(-.3, -.4, .3, -.1)), t);
-    vec4 brow = brow( withIN( uv, vec4(.1, .15, .43, .37))); //my solution 
+    vec4 brow = brow( withIN( uv, vec4(.1, .15, .43, .37)), t); //my solution 
     col = mix( col, head, head.a);
     col = mix (col, eye, eye.a);
     col = mix (col, mouth, mouth.a);
