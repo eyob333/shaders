@@ -22,10 +22,13 @@ vec2 withIN( vec2 uv, vec4 rect){
 }
 
 vec4 brow(vec2 uv, float t){
-    uv -= .5;
-    uv.y += .25;
+    float off =  mix( 1.1, 1., t);
+    
+    uv.y += -1.2 +  off;
     float y = uv.y;
-    uv.y += uv.x *.8 -.3;
+     uv.y += uv.x*mix(.5, .8, t)-mix(.1, .3, t);
+    uv.x -= mix(-.05, .0, t);
+    uv -= .5;
 
     vec4 col = vec4(.0);
     float blur = .1;
@@ -41,8 +44,8 @@ vec4 brow(vec2 uv, float t){
 
     vec4 browCol = mix(vec4(.4, .2, .2, 1.), vec4(1., .75, .5, 1.), colMask);
     // col.a = S(1., .9, d1);
-     uv.y += .15;
-    blur += .1;
+     uv.y += .65 -off*.5;
+    blur += mix(.0, .1, t);
     d1 = length(uv);
     s1 = S(.45, .45-blur, d1);
     d2 = length(uv-vec2(.1, -.2)*.7);
@@ -173,6 +176,8 @@ void main(){
 
     vec2 m = ( iMouse.xy  / iResolution.xy );
     m -= .5;
+
+    uv -=  m * (.25 - dot( uv,uv));
     float t = cos(iTime) * .5 + .5;
     gl_FragColor = smily(uv, m, t);
     // gl_FragColor = vec4(0.72, 0.02, 0.02, 1.0);
