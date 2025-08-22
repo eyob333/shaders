@@ -7,6 +7,9 @@ import toyVert from './shader/toy/vertex.glsl'
 import toyFrag from './shader/toy/fragment.glsl'
 import simleyVert from './shader/toy/smily/vertex.glsl'
 import simleyFrag from './shader/toy/smily/fragment.glsl'
+import hyperDvert from './shader/hyperD/vertex.glsl'
+import hyperDFrag from './shader/hyperD/fragment.glsl'
+
 
 // Set up the scene, camera, and renderer
 let scene, camera, renderer;
@@ -78,8 +81,10 @@ function createShaderMesh() {
         // fragmentShader: cryistalfragment,
         // vertexShader: toyVert,
         // fragmentShader: toyFrag
-        vertexShader: simleyVert,
-        fragmentShader: simleyFrag
+        // vertexShader: simleyVert,
+        // fragmentShader: simleyFrag,
+        vertexShader: hyperDvert,
+        fragmentShader: hyperDFrag,
 
     });
 
